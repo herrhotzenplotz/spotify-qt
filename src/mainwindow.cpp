@@ -1,12 +1,16 @@
 #include "mainwindow.hpp"
 #include "util/widget.hpp"
 
+#include "lib/cache/dbcache.hpp"
+
 MainWindow::MainWindow(lib::settings &settings, lib::paths &paths)
 	: settings(settings),
 	paths(paths),
 	cache(paths)
 {
 	lib::crash_handler::set_cache(cache);
+
+	lib::db_cache dbCache(paths);
 
 	// Splash
 	SplashScreen splash;
